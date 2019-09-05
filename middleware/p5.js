@@ -4,10 +4,10 @@ function runner(p5) {
   const HEIGHT = 100;
   const WIDTH = p5.windowWidth;
   const SIZE = HEIGHT / 2;
-  const LETTERS = "MONETA";
+  const LETTERS = ["MONETA"];
   const GAP = WIDTH / (LETTERS.length + 3);
 
-  let chars = LETTERS.split("").map((letter, index) => ({ letter, index }));
+  let chars = LETTERS.map((letter, index) => ({ letter, index }));
   let toggle = true;
 
   p5.setup = () => {
@@ -30,7 +30,7 @@ function runner(p5) {
         char.vx = (char.ox - char.x) / 20;
         char.vy = (char.oy - char.y) / 20;
       }
-      if (char.x < 0 || WIDTH < char.x + SIZE) {
+      if (char.x < 0 || WIDTH < char.x + SIZE * 4) {
         char.vx = -char.vx;
       }
       if (char.y < SIZE || HEIGHT < char.y) {
@@ -68,6 +68,6 @@ function runner(p5) {
   };
 }
 
-export default function() {
+export default function () {
   new p5(runner);
 }
